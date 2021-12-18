@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = Convors
+TARGET = convors
 INCLUDEPATH += .
 
 QT += widgets core
