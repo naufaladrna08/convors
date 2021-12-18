@@ -20,6 +20,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 # Input
-HEADERS += MainWidget.hpp
-SOURCES += Main.cpp MainWidget.cpp
+HEADERS += MainWidget.hpp Helpers.hpp
+SOURCES += Main.cpp MainWidget.cpp Helpers.cpp
 QMAKE_CXXFLAGS += -Wno-write-strings
