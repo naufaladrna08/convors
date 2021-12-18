@@ -1,4 +1,4 @@
-![Screenshot](/docs/screenshot.png)
+<img src="docs/screenshot.png" alt="Screenshot" style="zoom:200%;" />
 
 # Video Converter
 
