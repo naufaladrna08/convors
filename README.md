@@ -1,3 +1,5 @@
+![Screenshot](/docs/screenshot.png)
+
 # Video Converter
 
 Small and lightweight video converter made with QT5 and C++. Open Source
