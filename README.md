@@ -22,3 +22,6 @@ make
 ```bash
 ./app
 ```
+
+
+See TODO.md to contribute.
