@@ -2,7 +2,7 @@
 #include <QtCore/QDebug>
 #include <unordered_map>
 #include <string.h>
-#include "mainWidget.hpp"
+#include "MainWidget.hpp"
 
 // Constructor for main widget
 MainWidget::MainWidget(QWidget *parent) :
