@@ -1,0 +1,5 @@
+*.o
+app
+.qmake*
+moc_*
+Makefile
