@@ -21,23 +21,20 @@ MainWidget::MainWidget(QWidget *parent) :
   m_start->setDisabled(true);
 
   QVBoxLayout *vertical   = new QVBoxLayout;
-  QHBoxLayout *row1 = new QHBoxLayout;
-  QHBoxLayout *row2 = new QHBoxLayout;
-  QHBoxLayout *row4 = new QHBoxLayout;
-  QHBoxLayout *row5 = new QHBoxLayout;
+  QHBoxLayout *row[4] = {new QHBoxLayout};
 
-  row1->addWidget(m_srcfile);
-  row1->addWidget(m_open);
-  row2->addWidget(m_bitrate);
-  row2->addWidget(m_extension);
-  row2->addWidget(m_start);
-  row4->addWidget(m_label);
-  row5->addWidget(m_txtbrowser);
+  row[0]->addWidget(m_srcfile);
+  row[0]->addWidget(m_open);
+  row[1]->addWidget(m_bitrate);
+  row[1]->addWidget(m_extension);
+  row[1]->addWidget(m_start);
+  row[2]->addWidget(m_label);
+  row[3]->addWidget(m_txtbrowser);
 
-  vertical->addLayout(row1);
-  vertical->addLayout(row2);
-  vertical->addLayout(row4);
-  vertical->addLayout(row5);
+  vertical->addLayout(row[0]);
+  vertical->addLayout(row[1]);
+  vertical->addLayout(row[2]);
+  vertical->addLayout(row[3]);
 
   /* Bit rates */
   m_bitrate->addItem("300 kbps"); 
