@@ -1,5 +1,5 @@
 *.o
-app
+convors
 .qmake*
 moc_*
 Makefile
