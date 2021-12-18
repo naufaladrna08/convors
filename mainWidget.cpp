@@ -18,23 +18,27 @@ MainWidget::MainWidget(QWidget *parent) :
 
   m_file_dialog->setFileMode(QFileDialog::AnyFile);
   m_srcfile->setMaximumHeight(26);
+  m_srcfile->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   m_start->setDisabled(true);
 
   QVBoxLayout *vertical   = new QVBoxLayout;
-  QHBoxLayout *row[4] = {new QHBoxLayout};
+  QHBoxLayout *row0 = new QHBoxLayout;
+  QHBoxLayout *row1 = new QHBoxLayout;
+  QHBoxLayout *row2 = new QHBoxLayout;
+  QHBoxLayout *row3 = new QHBoxLayout;
 
-  row[0]->addWidget(m_srcfile);
-  row[0]->addWidget(m_open);
-  row[1]->addWidget(m_bitrate);
-  row[1]->addWidget(m_extension);
-  row[1]->addWidget(m_start);
-  row[2]->addWidget(m_label);
-  row[3]->addWidget(m_txtbrowser);
+  row0->addWidget(m_srcfile);
+  row0->addWidget(m_open);
+  row1->addWidget(m_bitrate);
+  row1->addWidget(m_extension);
+  row1->addWidget(m_start);
+  row2->addWidget(m_label);
+  row3->addWidget(m_txtbrowser);
 
-  vertical->addLayout(row[0]);
-  vertical->addLayout(row[1]);
-  vertical->addLayout(row[2]);
-  vertical->addLayout(row[3]);
+  vertical->addLayout(row0);
+  vertical->addLayout(row1);
+  vertical->addLayout(row2);
+  vertical->addLayout(row3);
 
   /* Bit rates */
   m_bitrate->addItem("300 kbps"); 
