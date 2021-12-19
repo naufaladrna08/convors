@@ -3,6 +3,9 @@
 #include <unordered_map>
 #include <string.h>
 #include "MainWidget.hpp"
+#include "Helpers.hpp"
+#include <stdlib.h>
+#include <string.h>
 
 // Constructor for main widget
 MainWidget::MainWidget(QWidget *parent) :
@@ -79,25 +82,26 @@ void MainWidget::onButtonReleased() {
   m_txtbrowser->clear();
   m_txtbrowser->append(tr("Running command: "));
 
-  std::unordered_map<char*, char*> data;
-  data["input"] = m_srcfile->toPlainText().toLocal8Bit().data();
-  data["output"] = "ouput.mkv";
-  // strcat(data["file_output"], m_extension->currentText().toLocal8Bit().data());
-  data["bitrate"] = "300";
+  /* Clear extension for output file */
+  std::string tmp = m_srcfile->toPlainText().toLocal8Bit().data();
+  size_t lastindex = tmp.find_last_of("."); 
+  std::string output = tmp.substr(0, lastindex) + "-converted." + m_extension->currentText().toLocal8Bit().data(); 
 
-  char command[1024];
-  strcpy(command, "ffmpeg -i ");
-  strcat(command, data["input"]);
-  strcat(command, " -vcodec libx264 -crf 20 ");
-  strcat(command, data["output"]);
-  strcat(command, " -b ");
-  strcat(command, data["bitrate"]);
-  m_txtbrowser->append(tr(command));
+  /* Create command */
+  std::unordered_map<std::string, std::string> data;
+  data["input"] = tmp;
+  data["output"] = output;
+  data["bitrate"] = m_bitrate->currentText().toLocal8Bit().data();
+  data["command"] = "ffmpeg -i \"" 
+    + data["input"] 
+    + "\" -vcodec libx264 -crf 20 " 
+    + "\"" + data["output"] + "\""
+    + " -b " +  data["bitrate"].substr(0, 4);
 
+  // qInfo(data["command"].c_str());
   /* Set up process to write to stdout and run command */
   m_process.setCurrentWriteChannel(QProcess::StandardOutput);
-  m_process.start(command);
-
+  m_process.start(data["command"].c_str());
 } 
 
 

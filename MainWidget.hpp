@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QWidget>
 #include <QtCore/QProcess>
+#include <string>
 class QPushButton;
 class QTextBrowser;
 class QLabel;
