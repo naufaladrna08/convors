@@ -9,7 +9,7 @@ To compile:
 1. Download g++ and qt libraries.
 
 ```bash
-sudo apt install qt5-default qt5-qmake -y
+sudo apt install qt5-default qt5-qmake ffmpeg -y
 ```
 
 2. Run command
