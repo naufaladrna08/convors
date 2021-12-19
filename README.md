@@ -1,4 +1,4 @@
-<img src="docs/screenshot.png" alt="Screenshot" style="zoom:200%;" />
+<img src="docs/screenshot.png" alt="Screenshot" width="100%" />
 
 # Video Converter
 
