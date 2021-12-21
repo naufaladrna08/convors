@@ -113,17 +113,15 @@ void MainWidget::onCaptureProcessOutput() {
   QProcess* process = qobject_cast<QProcess*>(sender());
 
   bool returnBool = false;
-  int i = -100;
   while (returnBool == false) {
-    returnBool = process->waitForFinished(10);
+    returnBool = process->waitForFinished(1000);
     QString outputStdOut = process->readAllStandardOutput();
     QString outputStdErr = process->readAllStandardError();
 
-    // m_txtbrowser->append(outputStdOut);
-    // m_txtbrowser->append(outputStdErr);
-    m_txtbrowser->append("Jalan");
-    qInfo("%i", i);
-    i++;
+    m_txtbrowser->append(outputStdOut);
+    m_txtbrowser->append(outputStdErr);
+    qInfo(outputStdErr.toLocal8Bit(). data());
+    qInfo(outputStdOut.toLocal8Bit().data());
   }
 }
 
