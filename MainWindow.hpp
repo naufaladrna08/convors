@@ -1,5 +1,5 @@
-#ifndef __MAINWIDGET_H__
-#define __MAINWIDGET_H__
+#ifndef __MAINWINDOW_H__
+#define __MAINWINDOW_H__
 
 #include <QtWidgets/QWidget>
 #include <QtCore/QProcess>
@@ -34,4 +34,4 @@ class MainWidget : public QWidget {
     QProcess m_process;
 };
 
-#endif // __MAINWIDGET_H__
+#endif // __MAINWINDOW_H__

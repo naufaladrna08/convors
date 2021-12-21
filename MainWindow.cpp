@@ -2,7 +2,7 @@
 #include <QtCore/QDebug>
 #include <unordered_map>
 #include <string.h>
-#include "MainWidget.hpp"
+#include "MainWindow.hpp"
 #include <stdlib.h>
 #include <string.h>
 

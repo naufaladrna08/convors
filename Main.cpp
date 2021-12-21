@@ -1,6 +1,6 @@
 #include <cstdio>
 #include <QtWidgets/QtWidgets>
-#include "MainWidget.hpp"
+#include "MainWindow.hpp"
 
 int main(int argc, char** argv) {
   QApplication a(argc, argv);
