@@ -7,7 +7,7 @@
 #include <string.h>
 
 // Constructor for main widget
-MainWidget::MainWidget(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent) :
   QWidget(parent) {
   m_start = new QPushButton(tr("Start"));
   m_open = new QPushButton(tr("Open"));
@@ -29,6 +29,7 @@ MainWidget::MainWidget(QWidget *parent) :
   QHBoxLayout *row2 = new QHBoxLayout;
   QHBoxLayout *row3 = new QHBoxLayout;
 
+  row0->setContentsMargins(0, 24, 0, 0);
   row0->addWidget(m_srcfile);
   row0->addWidget(m_open);
   row1->addWidget(m_bitrate);
@@ -62,10 +63,13 @@ MainWidget::MainWidget(QWidget *parent) :
   connect(m_start, SIGNAL(released()), this, SLOT(onButtonReleased()));
   connect(&m_process, SIGNAL(started()), this, SLOT(onCaptureProcessOutput()));
   connect(m_open, SIGNAL(released()), this, SLOT(onOpenFile()));
+
+  createActionMenu();
+  createMenu();
 }
 
 // Destructor
-MainWidget::~MainWidget() {
+MainWindow::~MainWindow() {
   delete m_start;
   delete m_open;
   delete m_file_dialog;
@@ -76,7 +80,7 @@ MainWidget::~MainWidget() {
   delete m_label;
 }
 
-void MainWidget::onButtonReleased() {
+void MainWindow::onButtonReleased() {
   /* Clear the text in Text browser */
   m_txtbrowser->clear();
   m_txtbrowser->append(tr("Running command: "));
@@ -104,7 +108,7 @@ void MainWidget::onButtonReleased() {
 } 
 
 
-void MainWidget::onCaptureProcessOutput() {
+void MainWindow::onCaptureProcessOutput() {
   /*
    * Determine whether the object that sent the signal was 
    * pointer to a process. 
@@ -124,7 +128,38 @@ void MainWidget::onCaptureProcessOutput() {
   }
 }
 
-void MainWidget::onOpenFile() {
+void MainWindow::onOpenFile() {
   m_srcfile->setText(QFileDialog::getOpenFileName(this, tr("Select video file"), "/home", tr("Video Files (*)")));
   m_start->setDisabled(false);
+}
+
+void MainWindow::onExit() {
+  exit(EXIT_SUCCESS);
+}
+
+void MainWindow::onAbout() {
+  
+}
+
+void MainWindow::createActionMenu() {
+  m_actionExit = new QAction(tr("&Exit"), this);
+  m_actionAbout = new QAction(tr("&About"), this);
+
+  m_actionExit->setStatusTip(tr("Quit Program"));
+  m_actionAbout->setStatusTip(tr("Show About"));
+
+  connect(m_actionExit, &QAction::triggered, this, &MainWindow::onExit);
+  connect(m_actionAbout, &QAction::triggered, this, &MainWindow::onAbout);
+}
+
+void MainWindow::createMenu()  {
+  m_menu = new QMenuBar(this);
+  m_menu->setNativeMenuBar(true);
+  m_menu->setMinimumWidth(640);
+
+  m_fileMenu = m_menu->addMenu(tr("&File"));
+  m_fileMenu->addAction(m_actionExit);
+
+  m_helpMenu = m_menu->addMenu(tr("&Help"));
+  m_helpMenu->addAction(m_actionAbout);
 }

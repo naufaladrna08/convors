@@ -9,20 +9,28 @@ class QTextBrowser;
 class QLabel;
 class QFileDialog;
 class QComboBox;
+class QMenuBar;
+class QMenu;
+class QAction;
 
-class MainWidget : public QWidget {
+class MainWindow : public QWidget {
   Q_OBJECT
 
   public:
-    explicit MainWidget(QWidget *parent = 0);
-    ~MainWidget();
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
 
   private slots:
     void onButtonReleased();  
     void onCaptureProcessOutput();  
     void onOpenFile();  
+    void onExit();
+    void onAbout();
 
   private:
+    void createActionMenu();
+    void createMenu();
+
     QFileDialog* m_file_dialog;
     QComboBox* m_bitrate;
     QComboBox* m_extension;
@@ -32,6 +40,12 @@ class MainWidget : public QWidget {
     QTextBrowser* m_srcfile;
     QLabel* m_label;
     QProcess m_process;
+
+    QMenuBar* m_menu;
+    QMenu* m_fileMenu;
+    QMenu* m_helpMenu;
+    QAction* m_actionExit;
+    QAction* m_actionAbout;
 };
 
 #endif // __MAINWINDOW_H__
