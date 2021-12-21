@@ -3,6 +3,7 @@
 
 #include <QtWidgets/QWidget>
 #include <QtCore/QProcess>
+#include "AboutWindow.hpp"
 #include <string>
 class QPushButton;
 class QTextBrowser;
@@ -46,6 +47,8 @@ class MainWindow : public QWidget {
     QMenu* m_helpMenu;
     QAction* m_actionExit;
     QAction* m_actionAbout;
+
+    AboutWindow* mw_about;
 };
 
 #endif // __MAINWINDOW_H__

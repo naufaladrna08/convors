@@ -138,7 +138,8 @@ void MainWindow::onExit() {
 }
 
 void MainWindow::onAbout() {
-  
+  mw_about = new AboutWindow;
+  mw_about->show();
 }
 
 void MainWindow::createActionMenu() {
