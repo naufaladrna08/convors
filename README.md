@@ -12,6 +12,13 @@ To compile:
 sudo apt install build-essential qt5-default qt5-qmake ffmpeg -y
 ```
 
+For Ubuntu 21.04 and later
+
+```bash
+sudo apt install build-essential qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools ffmpeg -y
+```
+
+
 2. Run command
 
 ```bash
